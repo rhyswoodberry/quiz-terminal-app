@@ -24,7 +24,8 @@ content = [
 
 ]
 
-#Welcome Screen
+# Welcome Screen
+# This loop runs in case the user inputs the wrong start message and breaks if the enter it correctly.
 while quiz_active = true
 
     puts Rainbow("Welcome to Doggo Quiz!").purple.underline
@@ -32,6 +33,7 @@ while quiz_active = true
     puts "Please type 'doggo' to begin."
     user_start = gets.chomp
     start_word = "doggo"
+# This bit checks if the user input matches the start_word in eithe upper or lower case.
     if user_start.include? start_word || start_word.upcase
         puts Rainbow("BEGIN!").green
         break
@@ -44,7 +46,8 @@ while quiz_active = true
 end
 
 # Question 1
-
+# These questions needed to be in a method, to avoid repitition.
+# Refer to variable by index to locate the keys we need to access for each part.
 puts Rainbow("Question: 1 - " + content[0][:question]).blue.bright
 puts "\n"
 puts "----------------------------------------------"
@@ -55,9 +58,11 @@ user_input = gets.chomp
 correct_answer = content[0][:answer].to_s
 if user_input.include? correct_answer then
     puts Rainbow("You are correct! The answer is #{content[0][:answer]}!").green
+    # add 5 points to score when correct answer given.
     content[0][:score] += 5
 else
     puts Rainbow("Sorry, that is incorrect. Maybe Google doggos?").red
+    # subtract 5 points from score when incorrect answer given.
     content[0][:score] -= 5
 end
 puts "----------------------------------------------"
@@ -109,6 +114,7 @@ puts Rainbow("Yay! You made it to the end of the quiz!").purple.bright
 puts Rainbow("Lets see how you did...").purple.bright
 puts "\n"
 puts "----------------------------------------------"
+# This part takes all the score keys and evaluates them giving the user a final score.
 results = content[0][:score] + content[1][:score] + content[2][:score]
 puts Rainbow("Your final score is: " + results.to_s).bright
 puts "----------------------------------------------"
@@ -128,7 +134,7 @@ puts "----------------------------------------------"
 
 
 # -----------------------------------------------------------------------------
-# -----------------------------------------------------------------------------
+# -----------------------------DRAFT CODE--------------------------------------
 # These are old bits of code that we tried but didn't work properly.
 # -----------------------------------------------------------------------------
 # -----------------------------------------------------------------------------
@@ -168,11 +174,3 @@ puts "----------------------------------------------"
 #             random_ques_index
 #         end
 # end
-
-# { 
-#         kind: "three", 
-#         question: "Which of these are considered ‘toy dogs’?",
-#         choices: ["A) Yorkshire Terrier", "B) Shih Tzu", "C) Shiba Inu", "D) Papillon"],
-#         answer: ["ABD"],
-#         score: 0
-#     },

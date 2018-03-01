@@ -1,17 +1,14 @@
 require_relative "quiz"
 
-def expect actual, message, expected
-    if actual == expected then
-        puts "PASS #{message}"
+# unfinished.
+# need to put our quiz file into module and methods.
+def test_for_correct_answer (x, y)
+    if x == y
+        puts "PASS"
     else
-        puts "FAIL #{message}"
+        puts "FAIL"
     end
-end
-##### ----------------------------------unfinished------------------------------------------------------ #####
-# didn't work out how to get this working.
-def test_for_correct_answer
-    question = content[x][:question]
-    answer = content[x][:answer]
-    
+
 end
 
+test_for_correct_answer(correct_answer, content[0][:answer].to_s)
